@@ -240,7 +240,7 @@
 
                 var input = fieldNode.querySelector('input');
 
-                input.className = 'form-control';
+                input.className += ' form-control';
 
                 inputGroup.appendChild(input);
 
@@ -273,7 +273,7 @@
 
                     var input = passwordInputs[0];
 
-                    input.className = 'form-control';
+                    input.className += ' form-control';
 
                     group.appendChild(input);
                 }
@@ -304,7 +304,7 @@
 
                     if (formControlTypes.includes(node.type)) {
 
-                        node.className = 'form-control';
+                        node.className += ' form-control';
 
                     }
 
@@ -330,7 +330,7 @@
 
                 var input = fieldNode.querySelector('input');
 
-                input.className = 'form-control';
+                input.className += ' form-control';
 
                 inputGroup.appendChild(input);
 
@@ -404,7 +404,7 @@
 
                 if (formControlTypes.includes(input.type)) {
 
-                    input.className = 'form-control';
+                    input.className += ' form-control';
 
                 }
 

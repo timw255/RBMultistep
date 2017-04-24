@@ -112,8 +112,8 @@ $('form > table').multistepForm({
 
 // add * to required field labels
 $('.requiredInput').each(function () {
-	var label = $('[for=' + $(this).attr('name') + ']');
-	label.append('&nbsp;<strong>*</strong>');
+    var label = $('[for=' + $(this).attr('name') + ']');
+    label.append('&nbsp;<strong>*</strong>');
 });
 
 // make required fields, required
@@ -121,13 +121,21 @@ $.validator.addClassRules('requiredInput', {
   required: true
 });
 
-// don't show any error messages for the required fields
-// because they're highlighted with CSS
-$.validator.messages.required = '';
-
 function isValid () {
     var form = $('form');
-    form.validate();
+    form.validate({
+      errorPlacement: function(error, element) {
+        // don't show any error messages for the required fields
+        // because they're highlighted with CSS
+        return true;
+      },
+      highlight: function(element) {
+        $(element).parent('div').addClass('has-error');
+      },
+      unhighlight: function(element) {
+        $(element).parent('div').removeClass('has-error');
+      }
+    });
     if (form.valid() == true){
         return true;
     }
