@@ -46,6 +46,12 @@ include it in them in the Script Component at the bottom of the portal page, tha
 <script src="{!#HOSTED_FILE.YOUR_HOSTED_FILE_ID}"></script>
 ```
 
+For a better mobile experience, add the Viewport meta tag to the "HTML Header". This will change the default browser behavior to show the form at a more comfortable size on mobile devices.
+
+```html
+<meta name="viewport" content="width=device-width, initial-scale=1">
+```
+
 ## Example Usage
 
 ```javascript

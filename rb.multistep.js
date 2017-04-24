@@ -153,7 +153,7 @@
                     for (var b = 0; b < numCols; b++) {
                         var col = document.createElement('div');
 
-                        col.className = 'col-sm-12 col-lg-' + 12 / numCols;
+                        col.className = 'col-lg-' + 12 / numCols;
 
                         var colNodes = getColumnNodes(rowNodes, b);
 
@@ -280,46 +280,45 @@
 
                 break;
             case 'time':
-                var inlineElement = document.createElement('div');
+                var row = document.createElement('div');
 
-                inlineElement.className = 'form-inline';
+                row.className = 'row';
 
-                for (var a = 0; a < 3; a++) {
+                fieldNode.removeChild(fieldNode.childNodes[1]);
 
-                    var newGroup;
+                for (var a = 0; a < 2; a++) {
+
+                    var col = document.createElement('div');
+
+                    var nodeContainer;
 
                     var node;
 
-                    if (a == 1) {
-                        newGroup = document.createElement('span');
+                    col.className = 'col-xs-6';
 
-                        newGroup.className = 'sep';
+                    nodeContainer = document.createElement('div');
 
-                        node = fieldNode.childNodes[0];
+                    nodeContainer.className = 'form-group';
 
-                    } else {
-                        newGroup = document.createElement('div');
+                    node = fieldNode.childNodes[0];
 
-                        newGroup.className = 'form-group';
+                    if (formControlTypes.includes(node.type)) {
 
-                        node = fieldNode.childNodes[0]
+                        node.className = 'form-control';
 
-                        if (formControlTypes.includes(node.type)) {
-
-                            node.className = 'form-control';
-
-                        }
                     }
-                    
-                    newGroup.appendChild(node);
 
-                    inlineElement.appendChild(newGroup);
+                    nodeContainer.appendChild(node);
+
+                    col.appendChild(nodeContainer);
+
+                    row.appendChild(col);
                     
                 }
 
                 group.appendChild(label);
 
-                group.appendChild(inlineElement);
+                group.appendChild(row);
 
                 break;
             case 'date-time':
