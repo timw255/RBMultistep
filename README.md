@@ -84,15 +84,19 @@ $('form > table').multistepForm({
 ```
 
 ### API
-`navigate(index)` - Go to a specific step. _(doesn't execute beforeNext or beforePrevious callbacks)_
+```javascript
+var ms = $('form > table').multistepForm().data('multistepForm');
+```
 
-`next()` - Go to the next step.
+`ms.navigate(index)` - Go to a specific step. _(doesn't execute beforeNext or beforePrevious callbacks)_
 
-`previous()` - Go back one step.
+`ms.next()` - Go to the next step.
 
-`showStep(index)` - Go to a specific step. (0 indexed)
+`ms.previous()` - Go back one step.
 
-`updateNavigation(status, index)` - Removes all status classes from the specified navigation item and then adds the specified status class.
+`ms.showStep(index)` - Go to a specific step. (0 indexed)
+
+`ms.updateNavigation(status, index)` - Removes all status classes from the specified navigation item and then adds the specified status class.
 
 ### Validation
 Form validation can be done quite easily using the [jQuery Validation Plugin](https://jqueryvalidation.org/) along
