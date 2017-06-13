@@ -83,6 +83,18 @@ $('form > table').multistepForm({
 });
 ```
 
+#### Example 'beforeNext'
+
+```javascript
+var ms = $('form > table').multistepForm({
+    beforeNext: function (e) {
+        // e.data.values contains the values for the specified step
+        
+        console.log(e);
+    }
+    }).data('multistepForm');
+```
+
 ### API
 ```javascript
 var ms = $('form > table').multistepForm().data('multistepForm');
