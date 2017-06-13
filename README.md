@@ -76,9 +76,9 @@ $('form > table').multistepForm({
         duration: 400 // set to false for no animations
     },
     progressTemplate: '#position#/#total#',
-    beforeNext: null,
-    beforePrevious: null,
-    beforeSubmit: null,
+    beforeNext: null, // function to run before proceeding to the next step ('Next' button clicked)
+    beforePrevious: null, // function to run before proceeding to the previous step ('Previous' button clicked)
+    beforeSubmit: null, // function to run before submitting the form ('Submit' button clicked)
     maxWidth: null
 });
 ```
