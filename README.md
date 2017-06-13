@@ -89,10 +89,10 @@ $('form > table').multistepForm({
 var ms = $('form > table').multistepForm({
     beforeNext: function (e) {
         // e.data.values contains the values for the specified step
-        
+
         console.log(e);
     }
-    }).data('multistepForm');
+}).data('multistepForm');
 ```
 
 ### API
