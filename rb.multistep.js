@@ -38,8 +38,11 @@
                 if (typeof _.settings.navigation.beforeNavigate === 'function') {
                     var event = $.Event('beforeNavigate');
 
+                    var values = _.getValues.call(_, _.currentIndex);
+
                     event.data = {
-                        currentIndex: _.currentIndex
+                        currentIndex: _.currentIndex,
+                        values: values
                     };
 
                     _.settings.navigation.beforeNavigate.call(_, event);
