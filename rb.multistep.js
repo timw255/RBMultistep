@@ -58,8 +58,11 @@
             if (typeof _.settings.beforeNext === 'function') {
                 var event = $.Event('beforeNext');
 
+                var values = _.getValues.call(_, _.currentIndex);
+
                 event.data = {
-                    currentIndex: _.currentIndex
+                    currentIndex: _.currentIndex,
+                    values: values
                 };
 
                 _.settings.beforeNext.call(_, event);
@@ -77,8 +80,11 @@
             if (typeof _.settings.beforePrevious === 'function') {
                 var event = $.Event('beforePrevious');
 
+                var values = _.getValues.call(_, _.currentIndex);
+
                 event.data = {
-                    currentIndex: _.currentIndex
+                    currentIndex: _.currentIndex,
+                    values: values
                 };
 
                 _.settings.beforePrevious.call(_, event);
@@ -160,6 +166,16 @@
                         if (colNodes.length > 1) {
                             
                             col.appendChild(buildGroup.call(_, colNodes, currentStepIndex));
+
+                        } else if (colNodes.length === 1 && colNodes[0].className === 'detailHTMLCol') {
+
+                            var group = document.createElement('div');
+
+                            group.className = 'detail-html';
+
+                            group.innerHTML = colNodes[0].innerHTML;
+
+                            col.appendChild(group);
 
                         }
 
@@ -397,7 +413,7 @@
                 group.appendChild(helpText);
 
                 break;
-            default:
+            case 'default':
                 group.appendChild(label);
 
                 var input = fieldNode.childNodes[0];
@@ -409,7 +425,6 @@
                 }
 
                 group.appendChild(input);
-
         }
 
         var error = fieldNode.querySelector('font');
@@ -870,6 +885,26 @@
     }
 
     $.extend(MultistepForm.prototype, {
+        getValues: function (index) {
+            var _ = this;
+
+            var data = _.$form.find('fieldset').eq(index).find(':input').serialize();
+
+            return data.split('&').reduce(function (values = [], param) {
+
+                var paramSplit = param.split('=').map(function (value) {
+
+                    return decodeURIComponent(value.replace('+', ' '));
+
+                });
+
+                values[paramSplit[0]] = paramSplit[1];
+
+                return values;
+
+            }, {});
+        },
+
         navigate: function (index) {
             var _ = this;
 

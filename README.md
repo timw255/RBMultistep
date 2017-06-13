@@ -87,6 +87,7 @@ $('form > table').multistepForm({
 ```javascript
 var ms = $('form > table').multistepForm().data('multistepForm');
 ```
+`ms.getValues(index)` - Get the values for the specified step _(Returns an Array)_
 
 `ms.navigate(index)` - Go to a specific step. _(doesn't execute beforeNext or beforePrevious callbacks)_
 
