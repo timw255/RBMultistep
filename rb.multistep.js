@@ -321,7 +321,7 @@
 
                     node = fieldNode.childNodes[0];
 
-                    if (formControlTypes.includes(node.type)) {
+                    if (formControlTypes.indexOf(node.type) !== -1) {
 
                         node.className += ' form-control';
 
@@ -421,7 +421,7 @@
 
                 var input = fieldNode.childNodes[0];
 
-                if (formControlTypes.includes(input.type)) {
+                if (formControlTypes.indexOf(input.type) !== -1) {
 
                     input.className += ' form-control';
 
@@ -893,7 +893,7 @@
 
             var data = _.$form.find('fieldset').eq(index).find(':input').serialize();
 
-            return data.split('&').reduce(function (values = [], param) {
+            return data.split('&').reduce(function (values, param) {
 
                 var paramSplit = param.split('=').map(function (value) {
 
