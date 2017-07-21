@@ -206,9 +206,9 @@
 
         var fieldNode = colNodes[1];
 
-        var label = buildLabel(labelNode, fieldNode.firstChild.id);
-
         var fieldType = getFieldType(fieldNode);
+
+        var label = buildLabel(labelNode, fieldNode.firstChild.id);
 
         switch (fieldType) {
             case 'group':
@@ -236,6 +236,26 @@
                 group.appendChild(label);
 
                 group.appendChild(newFields);
+
+                break;
+            case 'dependent-picklist':
+                var newId = fieldNode.childNodes[3].name + Date.now();
+
+                label = buildLabel(labelNode, newId);
+
+                group.appendChild(label);
+
+                var input = fieldNode.childNodes[3];
+
+                input.id = newId;
+
+                input.className += ' form-control';
+
+                group.appendChild(input);
+
+                var script = fieldNode.childNodes[1];
+
+                input.appendChild(script);
 
                 break;
             case 'checkbox':
@@ -686,6 +706,14 @@
         if (fieldNodeLabels.length > 0) {
 
             return 'group';
+
+        }
+
+        var scriptNodes = fieldNode.getElementsByTagName('script');
+
+        if (scriptNodes.length === 1) {
+            
+            return 'dependent-picklist';
 
         }
 

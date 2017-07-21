@@ -72,8 +72,8 @@ $('form > table').multistepForm({
         itemTemplate: '<span class="position">#position#</span><span class="title">#title#</span>',
         beforeNavigate: null
     },
-    animation: {
-        duration: 400 // set to false for no animations
+    animation: { // set to false for no animations
+        duration: 400
     },
     progressTemplate: '#position#/#total#',
     beforeNext: null, // function to run before proceeding to the next step ('Next' button clicked)
@@ -129,7 +129,7 @@ $('form > table').multistepForm({
 
 // add * to required field labels
 $('.requiredInput').each(function () {
-    var label = $('[for=' + $(this).attr('name') + ']');
+    var label = $('[for=' + $(this).attr('id') + ']');
     label.append('&nbsp;<strong>*</strong>');
 });
 
