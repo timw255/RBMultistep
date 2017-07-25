@@ -17,7 +17,7 @@ The plugin uses prefixes to identify the components of the multistep form. Here'
 |[multistep]Last Page|Fields for Page 3|
 |**System Section - Submission Form End**||
 |[multistep-footer]Footer|HTML Component|
-|New Section|Script Component|
+|[multistep-script]Script|Script Component|
 
 ### Rollbase Section Prefixes
 **`[multistep-header]`**
@@ -32,12 +32,16 @@ Each section in the portal that begins with this prefix will become a new step i
 
 The contents of this section will be used as a static footer at the bottom of the form.
 
+**`[multistep-script]`**
+
+The contents of this section will be rendered under the multistep form. This is to allow custom `<script>`s and `<style>`s.
+
 Sections that act as pages (ones where the section title begins with `[multistep]`) can support multiple columns.
 Each column will be transformed into a responsive one.
 
 ## Setup
 The plugin, css file, and any additional libraries can be [included in the Header](https://documentation.progress.com/output/rb/doc/index.html#page/rb/creating-a-custom-header-and-footer.html) of the portal. If you'd rather
-include it in them in the Script Component at the bottom of the portal page, that works too.
+include it in them in the Script Component at the bottom of the portal page, that works too. (Just make sure to prefix the Section Title as [multistep-script])
 
 ```html
 <!-- rb.multistep.css -->

@@ -803,6 +803,8 @@
 
         var footer = _.element.querySelector('[name^=\\[multistep-footer\\]]');
 
+        var script = _.element.querySelector('[name^=\\[multistep-script\\]]');
+
         if (steps.length < 2) {
 
             return;
@@ -858,6 +860,22 @@
         nodes[nodes.length - 1].getElementsByClassName('panel-body')[0].appendChild(submit);
 
         _.parent.appendChild(newForm);
+
+        if (script !== null) {
+
+            var detailHTMLCol = script.querySelector('.detailHTMLCol');
+
+            if (detailHTMLCol !== null) {
+
+                for (var a = 0, b = detailHTMLCol.children.length; a < b; a++) {
+
+                    _.parent.appendChild(detailHTMLCol.children[0]);
+
+                }
+
+            }
+
+        }
 
         _.$form = $(newForm);
 
