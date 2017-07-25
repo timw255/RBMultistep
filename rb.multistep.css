@@ -1,6 +1,6 @@
 html { height: 100%; }
 body { min-height: 100%; font-size: 14px; line-height: 1.42857143; color: #333; }
-form > table { display: none; }
+form > table.ms { display: none; }
 .panel-heading p { margin: 0; }
 #ms-navigation { display: -webkit-box; display: -moz-box; display: -ms-flexbox; display: -webkit-flex; display: flex; }
 #ms-navigation.stacked { display: block; }
